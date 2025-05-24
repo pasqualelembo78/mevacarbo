@@ -20,7 +20,8 @@ sudo ufw allow 17081/tcp      # Mevacoin RPC
 sudo ufw allow 17082/tcp      # Mevacoin RPC secondario
 sudo ufw allow 17083/tcp 
 sudo ufw allow 17084/tcp 
-sudo ufw allow 17085/tcp 
+sudo ufw allow 17085/tcp
+sudo ufw allow 17086/tcp
 sudo ufw allow 'Apache'       # HTTP (porta 80)
 sudo ufw allow 'Apache Full'  # HTTP + HTTPS (porte 80 e 443)
 sudo ufw --force enable
