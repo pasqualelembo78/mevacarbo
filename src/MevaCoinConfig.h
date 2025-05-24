@@ -200,7 +200,8 @@ const char     P2P_STAT_TRUSTED_PUB_KEY[]                    = "";
 
 const char* const SEED_NODES[] = { 
  
-  "195.231.65.38:17080"
+  "195.231.65.38:17080", 
+"195.231.76.77:17080" 
 };
 
 } // MevaCoin
