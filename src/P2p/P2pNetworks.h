@@ -15,21 +15,17 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with Karbo.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/uuid_generators.hpp>
-#include <boost/uuid/uuid_io.hpp>
-#include "../MevaCoinConfig.h"
-
 #pragma once
+
+#include <boost/uuid/uuid.hpp>
 
 namespace MevaCoin
 {
-	namespace
-	{
-		boost::uuids::uuid name;
-		boost::uuids::name_generator gen(name);
-		boost::uuids::uuid u = gen(GENESIS_COINBASE_TX_HEX);
-	}
-	const static boost::uuids::uuid MEVACOIN_NETWORK = u;
+    // UUID fisso per la rete MevaCoin
+    const static boost::uuids::uuid MEVACOIN_NETWORK = { {
+        0xcf, 0x74, 0x21, 0x8a,
+        0x75, 0x61, 0x41, 0x0b,
+        0x8e, 0xa7, 0xa3, 0xa9,
+        0xc0, 0x12, 0x4b, 0x92
+    } };
 }
-
