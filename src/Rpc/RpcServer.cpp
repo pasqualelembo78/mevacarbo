@@ -23,6 +23,7 @@
 #include "version.h"
 
 #include <future>
+#include <boost/uuid/uuid_io.hpp>
 #include <unordered_map>
 #include <time.h>
 #include <boost/lexical_cast.hpp>
@@ -2376,7 +2377,7 @@ bool RpcServer::on_get_connections(const COMMAND_RPC_GET_CONNECTIONS::request& r
 
     c.version = p.version;
     c.state = get_protocol_state_string(p.m_state);
-    c.connection_id = boost::lexical_cast<std::string>(p.m_connection_id);
+    c.connection_id = boost::uuids::to_string(p.m_connection_id);
     c.remote_ip = Common::ipAddressToString(p.m_remote_ip);
     c.remote_port = p.m_remote_port;
     c.is_incoming = p.m_is_income;

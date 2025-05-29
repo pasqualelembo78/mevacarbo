@@ -33,7 +33,7 @@ const uint64_t EXPECTED_NUMBER_OF_BLOCKS_PER_DAY             = 24 * 60 * 60 / DI
 const uint64_t MEVACOIN_MAX_BLOCK_NUMBER                   = 500000000;
 const size_t   MEVACOIN_MAX_BLOCK_BLOB_SIZE                = 500000000;
 const size_t   MEVACOIN_MAX_TX_SIZE                        = 1000000000;
-const uint64_t MEVACOIN_PUBLIC_ADDRESS_BASE58_PREFIX       = 111; // addresses start with "K"
+const uint64_t MEVACOIN_PUBLIC_ADDRESS_BASE58_PREFIX       = 118; // addresses start with "M"
 const uint64_t MEVACOIN_TX_PROOF_BASE58_PREFIX             = 3576968; // (0x369488), starts with "Proof..."
 const uint64_t MEVACOIN_RESERVE_PROOF_BASE58_PREFIX        = 44907175188; // (0xa74ad1d14), starts with "RsrvPrf..."
 const uint64_t MEVACOIN_KEYS_SIGNATURE_BASE58_PREFIX       = 176103705; // (0xa7f2119), starts with "SigV1..."
@@ -45,11 +45,11 @@ const size_t   BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW             = 60;
 const size_t   BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V1          = 11;
 
 // MONEY_SUPPLY - total number coins to be generated
-const uint64_t MONEY_SUPPLY                                  = UINT64_C(10000000000000000000);
-const uint64_t COIN                                          = UINT64_C(1000000000000);
-const uint64_t TAIL_EMISSION_REWARD                          = UINT64_C(1000000000000);
+const uint64_t COIN = UINT64_C(10000000);
+const uint64_t MONEY_SUPPLY = UINT64_C(100000000000000000);
+const uint64_t TAIL_EMISSION_REWARD                          = UINT64_C(10000000);
 const size_t MEVACOIN_COIN_VERSION                         = 1;
-const unsigned EMISSION_SPEED_FACTOR                         = 18;
+const unsigned EMISSION_SPEED_FACTOR                         = 19;
 static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
 const size_t   MEVACOIN_REWARD_BLOCKS_WINDOW               = 100;
@@ -133,7 +133,7 @@ const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json"
 const char     MEVACOIN_NAME[]                             = "mevacoin";
 const char     MEVACOIN_TICKER[]                           = "MVC";
 const char     GENESIS_COINBASE_TX_HEX[] = 
-"010a01ff0001fac484c69cd608029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101d6e65ff50ead7afc63544eb76c213bbb78dbd92509f1bbbe32e87ef6a706c36f";
+"010a01ff0001b197bcc5c605029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101796dd76ed86688953fbde9d708f4fb283a873e65cc607c609e952cf1b1c035c1";
 const char     DNS_CHECKPOINTS_HOST[]                        = "checkpoints.karbo.org";
 
 const uint8_t  CURRENT_TRANSACTION_VERSION                   =  1;
