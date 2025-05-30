@@ -49,7 +49,7 @@ const uint64_t COIN = UINT64_C(10000000);
 const uint64_t MONEY_SUPPLY = UINT64_C(100000000000000000);
 const uint64_t TAIL_EMISSION_REWARD                          = UINT64_C(10000000);
 const size_t MEVACOIN_COIN_VERSION                         = 1;
-const unsigned EMISSION_SPEED_FACTOR                         = 19;
+const unsigned EMISSION_SPEED_FACTOR                         = 18;
 static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
 const size_t   MEVACOIN_REWARD_BLOCKS_WINDOW               = 100;
