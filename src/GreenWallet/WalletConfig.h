@@ -11,7 +11,7 @@
 namespace WalletConfig
 {
     /* The prefix your coins address starts with */
-    const std::string addressPrefix = "K";
+    const std::string addressPrefix = "L";
 
     /* Your coins 'Ticker', e.g. Monero = XMR, Bitcoin = BTC */
     const std::string ticker = "MVC";
@@ -36,7 +36,7 @@ namespace WalletConfig
     const std::string coinName = "mevacoin";
 
     /* Where can your users contact you for support? E.g. discord */
-    const std::string contactLink = "https://t.me/karbowanec";
+    const std::string contactLink = "https://www.mevacoin.it/";
 
     /* The number of decimals your coin has */
     const int numDecimalPlaces = MevaCoin::parameters
