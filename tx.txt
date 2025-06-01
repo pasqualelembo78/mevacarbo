@@ -1,0 +1,39 @@
+=== Risultati per 'genesis_block' ===
+
+=== Risultati per 'create_coinbase_tx' ===
+
+=== Risultati per 'coinbase' ===
+./tests/UnitTests/TestWallet.cpp:351:  generator.generateEmptyBlocks(currency.minedMoneyUnlockWindow()); //coinbase money should become available after 10 blocks
+Binary file ./build/src/vanitygen matches
+Binary file ./build/src/mevacoind matches
+Binary file ./build/src/CMakeFiles/Rpc.dir/Rpc/RpcServer.cpp.o matches
+Binary file ./build/src/CMakeFiles/MevaCoinCore.dir/MevaCoinCore/Currency.cpp.o matches
+Binary file ./build/src/CMakeFiles/MevaCoinCore.dir/MevaCoinCore/Blockchain.cpp.o matches
+Binary file ./build/src/CMakeFiles/MevaCoinCore.dir/MevaCoinCore/MinerConfig.cpp.o matches
+Binary file ./build/src/libRpc.a matches
+Binary file ./build/src/simplewallet matches
+Binary file ./build/src/greenwallet matches
+Binary file ./build/src/libMevaCoinCore.a matches
+Binary file ./build/src/walletd matches
+./src/MevaCoinCore/Currency.cpp:98:		// Hard code coinbase tx in genesis block, because "tru" generating tx use random, but genesis should be always the same
+./src/MevaCoinCore/Currency.cpp:107:			logger(ERROR, BRIGHT_RED) << "failed to parse coinbase tx from hard coded blob";
+./src/MevaCoinCore/Blockchain.cpp:1037:        << "Only 1 output in coinbase transaction allowed";
+./src/MevaCoinCore/Core.cpp:576:  //make blocks coin-base tx looks close to real coinbase tx to get truthful blob size
+./src/MevaCoinCore/MinerConfig.cpp:26:const command_line::arg_descriptor<std::string> arg_extra_messages   = { "extra-messages-file", "Specify file for extra messages to include into coinbase transactions", "", true };
+./src/Rpc/RpcServer.cpp:1778:    // simple list of tx hashes without details, add coinbase first
+./src/Rpc/RpcServer.cpp:1910:        body += "</td>\n    <td colspan=\"2\">coinbase</td>\n";
+./src/Rpc/RpcServer.cpp:1981:    // no signatures e.g. in coinbase
+./src/Rpc/RpcServer.cpp:2064:  res.transactions_count = m_core.getBlockchainTotalTransactions() - res.height; //without coinbase
+./src/Rpc/RpcServer.cpp:2635:    logger(Logging::ERROR) << "Failed to find tx pub key in coinbase extra";
+./src/Rpc/RpcServer.cpp:2636:    throw JsonRpc::JsonRpcError{ CORE_RPC_ERROR_CODE_INTERNAL_ERROR, "Internal error: failed to find tx pub key in coinbase extra" };
+./src/Rpc/RpcServer.cpp:2756:      "Internal error: coinbase transaction in the block has the wrong type" };
+./src/Transfers/CommonTypes.h:39:  // first transaction is always coinbase
+
+=== Risultati per 'generate_genesis_block' ===
+
+=== Risultati per 'blockchain::init' ===
+
+=== Risultati per 'premined' ===
+
+=== Risultati per 'miner_address' ===
+./tests/IntegrationTestLib/RPCTestNode.cpp:49:    req.miner_address = address;

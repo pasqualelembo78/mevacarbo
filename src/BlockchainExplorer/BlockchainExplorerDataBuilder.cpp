@@ -168,13 +168,32 @@ bool BlockchainExplorerDataBuilder::fillBlockDetails(const Block &block, BlockDe
   uint64_t maxReward = 0;
   uint64_t currentReward = 0;
   int64_t emissionChange = 0;
-  if (!m_core.getBlockReward(block.majorVersion, blockDetails.sizeMedian, 0, prevBlockGeneratedCoins, 0, maxReward, emissionChange)) {
+  // Prima chiamata alla funzione getBlockReward con altezza = 0
+if (!m_core.getBlockReward(
+        block.majorVersion,
+        0, // ← height placeholder
+        blockDetails.sizeMedian,
+        0, // currentBlockSize
+        prevBlockGeneratedCoins,
+        0, // fee
+        maxReward,
+        emissionChange)) {
     return false;
-  }
+}
 
-  if (!m_core.getBlockReward(block.majorVersion, blockDetails.sizeMedian, blockDetails.transactionsCumulativeSize, prevBlockGeneratedCoins, 0, currentReward, emissionChange)) {
+// Seconda chiamata alla funzione getBlockReward con altezza = 0
+if (!m_core.getBlockReward(
+        block.majorVersion,
+        0, // ← height placeholder
+        blockDetails.sizeMedian,
+        blockDetails.transactionsCumulativeSize,
+        prevBlockGeneratedCoins,
+        0, // fee
+        currentReward,
+        emissionChange)) {
     return false;
-  }
+}
+
 
   blockDetails.baseReward = maxReward;
   if (maxReward == 0 && currentReward == 0) {

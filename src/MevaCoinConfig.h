@@ -28,12 +28,12 @@
 namespace MevaCoin {
 namespace parameters {
 
-const uint64_t DIFFICULTY_TARGET                             = 240; // seconds
+const uint64_t DIFFICULTY_TARGET                             = 180; // seconds
 const uint64_t EXPECTED_NUMBER_OF_BLOCKS_PER_DAY             = 24 * 60 * 60 / DIFFICULTY_TARGET;
 const uint64_t MEVACOIN_MAX_BLOCK_NUMBER                   = 500000000;
 const size_t   MEVACOIN_MAX_BLOCK_BLOB_SIZE                = 500000000;
 const size_t   MEVACOIN_MAX_TX_SIZE                        = 1000000000;
-const uint64_t MEVACOIN_PUBLIC_ADDRESS_BASE58_PREFIX       = 118; // addresses start with "M"
+const uint64_t MEVACOIN_PUBLIC_ADDRESS_BASE58_PREFIX       = 125; // addresses start with "M"
 const uint64_t MEVACOIN_TX_PROOF_BASE58_PREFIX             = 3576968; // (0x369488), starts with "Proof..."
 const uint64_t MEVACOIN_RESERVE_PROOF_BASE58_PREFIX        = 44907175188; // (0xa74ad1d14), starts with "RsrvPrf..."
 const uint64_t MEVACOIN_KEYS_SIGNATURE_BASE58_PREFIX       = 176103705; // (0xa7f2119), starts with "SigV1..."
@@ -45,11 +45,11 @@ const size_t   BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW             = 60;
 const size_t   BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V1          = 11;
 
 // MONEY_SUPPLY - total number coins to be generated
-const uint64_t COIN = UINT64_C(10000000);
+const uint64_t COIN = UINT64_C(1000000000);
 const uint64_t MONEY_SUPPLY = UINT64_C(100000000000000000);
-const uint64_t TAIL_EMISSION_REWARD                          = UINT64_C(10000000);
+const uint64_t TAIL_EMISSION_REWARD                          = UINT64_C(1000000000);
 const size_t MEVACOIN_COIN_VERSION                         = 1;
-const unsigned EMISSION_SPEED_FACTOR                         = 19;
+const unsigned EMISSION_SPEED_FACTOR                         = 20;
 static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
 const size_t   MEVACOIN_REWARD_BLOCKS_WINDOW               = 100;
@@ -58,7 +58,7 @@ const size_t   MEVACOIN_BLOCK_GRANTED_FULL_REWARD_ZONE_V2  = 1000000;
 const size_t   MEVACOIN_BLOCK_GRANTED_FULL_REWARD_ZONE_V1  = 100000;
 const size_t   MEVACOIN_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT = MEVACOIN_BLOCK_GRANTED_FULL_REWARD_ZONE;
 const size_t   MEVACOIN_COINBASE_BLOB_RESERVED_SIZE        = 600;
-const size_t   MEVACOIN_DISPLAY_DECIMAL_POINT              = 12;
+const size_t   MEVACOIN_DISPLAY_DECIMAL_POINT              = 9;
 
 const uint64_t MINIMUM_FEE_V1                                = UINT64_C(100000000);
 const uint64_t MINIMUM_FEE_V2                                = UINT64_C(100000000000);
@@ -133,8 +133,8 @@ const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json"
 const char     MEVACOIN_NAME[]                             = "mevacoin";
 const char     MEVACOIN_TICKER[]                           = "MVC";
 const char     GENESIS_COINBASE_TX_HEX[] = 
-"010a01ff0001b197bcc5c605029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101796dd76ed86688953fbde9d708f4fb283a873e65cc607c609e952cf1b1c035c1";
-const char     DNS_CHECKPOINTS_HOST[]                        = "checkpoints.karbo.org";
+"010a01ff0001d88bdea2e302029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121011c0ec64b7c30df9936c9f1d9b4c4605710d7c1a2291a087f4ebf9b36ce061fc0";
+const char     DNS_CHECKPOINTS_HOST[]                        = "checkpoints.mevacoin.it";
 
 const uint8_t  CURRENT_TRANSACTION_VERSION                   =  1;
 const uint8_t  BLOCK_MAJOR_VERSION_1                         =  1;

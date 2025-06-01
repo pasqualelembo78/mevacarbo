@@ -176,29 +176,36 @@ namespace MevaCoin {
 		return baseReward;
 	}
 
-  bool Currency::getBlockReward(uint8_t blockMajorVersion, size_t medianSize, size_t currentBlockSize, uint64_t alreadyGeneratedCoins,
+  bool Currency::getBlockReward(uint8_t blockMajorVersion, uint32_t height, size_t medianSize, size_t currentBlockSize, uint64_t alreadyGeneratedCoins,
     uint64_t fee, uint64_t& reward, int64_t& emissionChange) const {
 
-    uint64_t baseReward = calculateReward(alreadyGeneratedCoins);
-
-    size_t blockGrantedFullRewardZone = blockGrantedFullRewardZoneByBlockVersion(blockMajorVersion);
-    medianSize = std::max(medianSize, blockGrantedFullRewardZone);
-    if (currentBlockSize > UINT64_C(2) * medianSize) {
-      logger(DEBUGGING) << "Block cumulative size is too big: " << currentBlockSize << ", expected less than " << 2 * medianSize;
-      return false;
-    }
-
-    uint64_t penalizedBaseReward = getPenalizedAmount(baseReward, medianSize, currentBlockSize);
-    uint64_t penalizedFee = blockMajorVersion >= BLOCK_MAJOR_VERSION_2 ? getPenalizedAmount(fee, medianSize, currentBlockSize) : fee;
-    if (mevacoinCoinVersion() == 1) {
-      penalizedFee = getPenalizedAmount(fee, medianSize, currentBlockSize);
-    }
-
-    emissionChange = penalizedBaseReward - (fee - penalizedFee);
-    reward = penalizedBaseReward + penalizedFee;
-
+  if (height == 1) {
+    reward = 1000000 * parameters::COIN; // Ricompensa speciale per il blocco 0
+    emissionChange = reward;
     return true;
   }
+
+  uint64_t baseReward = calculateReward(alreadyGeneratedCoins);
+  size_t blockGrantedFullRewardZone = blockGrantedFullRewardZoneByBlockVersion(blockMajorVersion);
+  medianSize = std::max(medianSize, blockGrantedFullRewardZone);
+
+  if (currentBlockSize > UINT64_C(2) * medianSize) {
+    logger(DEBUGGING) << "Block cumulative size is too big: " << currentBlockSize << ", expected less than " << 2 * medianSize;
+    return false;
+  }
+
+  uint64_t penalizedBaseReward = getPenalizedAmount(baseReward, medianSize, currentBlockSize);
+  uint64_t penalizedFee = blockMajorVersion >= BLOCK_MAJOR_VERSION_2 ? getPenalizedAmount(fee, medianSize, currentBlockSize) : fee;
+
+  if (mevacoinCoinVersion() == 1) {
+    penalizedFee = getPenalizedAmount(fee, medianSize, currentBlockSize);
+  }
+
+  emissionChange = penalizedBaseReward - (fee - penalizedFee);
+  reward = penalizedBaseReward + penalizedFee;
+
+  return true;
+}
 
 	size_t Currency::maxBlockCumulativeSize(uint64_t height) const {
 		assert(height <= std::numeric_limits<uint64_t>::max() / m_maxBlockSizeGrowthSpeedNumerator);
@@ -228,7 +235,7 @@ namespace MevaCoin {
 
 		uint64_t blockReward;
 		int64_t emissionChange;
-		if (!getBlockReward(blockMajorVersion, medianSize, currentBlockSize, alreadyGeneratedCoins, fee, blockReward, emissionChange)) {
+		if (!getBlockReward(blockMajorVersion, height, medianSize, currentBlockSize, alreadyGeneratedCoins, fee, blockReward, emissionChange)) {
 			logger(INFO) << "Block is too big";
 			return false;
 		}
